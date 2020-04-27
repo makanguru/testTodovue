@@ -2,7 +2,7 @@
 <div>
     <form @submit.prevent="onSubmit">
         <input type="text" v-model="title" placeholder="Create new todo">
-        <button type='submit'>&oplus;</button>
+        <button type='submit' title='Add todo'>&oplus;</button>
     </form>
 </div>    
 </template>

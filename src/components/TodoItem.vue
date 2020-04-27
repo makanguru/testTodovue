@@ -6,7 +6,7 @@
     <div class='title'>{{todo.title }}</div>
     
     <button 
-        v-on:click="$emit('deltodo', todo.id)">
+        v-on:click="$emit('deltodo', todo.id)" title='Delete row'>
         &otimes;
     </button>
     </li>
@@ -51,6 +51,7 @@ export default {
 
     button {
         height: 33px;
+        margin-right: 10px;
     }
 
 </style>>
