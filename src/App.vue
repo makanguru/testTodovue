@@ -1,62 +1,9 @@
 <template>
   <div id="app">
-    <h1>Block notes!</h1>
-      <AddNote 
-        @addnote="addNote"
-      />
-      <NoteList 
-        v-bind:notes="notes"
-        @delnote="delNote"
-      />
+    <router-view />
   </div>
-
-
 </template>
 
-<script>
-
-import NoteList from '@/components/NoteList'
-import AddNote from '@/components/AddNote'
-export default {
-  name: 'App',
-  data() {
-    return {
-      notes: []
-    }
-  },
-  mounted(){
-
-    if (localStorage.getItem('Mnvnotes')) {
-      try {
-        this.notes = JSON.parse(localStorage.getItem('Mnvnotes'));
-      } catch(e) {
-        localStorage.removeItem('Mnvnotes');
-      }
-    }
-      
-  },
-  
-  components: {
-    NoteList, AddNote
-  },
-  methods: {
-    delNote(id){
-      this.notes = this.notes.filter(t => t.id !== id)
-      this.saveTodo()
-    },
-    addNote(note) {
-      this.notes.push(note)
-      this.saveNote()
-    },
-    saveNote() {
-      const parsed = JSON.stringify(this.notes);
-      localStorage.setItem('Mnvnotes', parsed);
-    }
-
-
-  }
-}
-</script>
 
 <style>
 
@@ -80,8 +27,5 @@ button {
   font-weight: bolder;
   font-size: 20px;
 }
-
-
-
 
 </style>

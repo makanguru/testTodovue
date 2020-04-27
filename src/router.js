@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Home from '@/views/Home'
 
 Vue.use(Router)
@@ -12,7 +13,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/todos',
+      path: '/todos/:id',
       component: () => import('./views/Todos.vue')
     }
   ]

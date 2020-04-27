@@ -19,18 +19,15 @@ export default {
     methods: {
         onSubmit(){
             if (this.title.trim()) {
+                
                 const newNote = {
                     id: Date.now(),
-                    title: this.title,
-                    completed: false
+                    title: this.title
                 }
 
                 this.$emit('addnote', newNote)
                 this.title = ''
             }
-
-
-
         }
     }
 }
