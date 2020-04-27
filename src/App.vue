@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Todo test!</h1>
+    <h1>Block notes!</h1>
       <AddTodo 
         @addtodo="addTodo"
       />
