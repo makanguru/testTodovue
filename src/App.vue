@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <h1>Block notes!</h1>
-      <AddTodo 
-        @addtodo="addTodo"
+      <AddNote 
+        @addnote="addNote"
       />
       <TodoList 
         v-bind:todos="todos"
@@ -16,7 +16,7 @@
 <script>
 
 import TodoList from '@/components/TodoList'
-import AddTodo from '@/components/AddTodo'
+import AddNote from '@/components/AddNote'
 export default {
   name: 'App',
   data() {
@@ -37,14 +37,14 @@ export default {
   },
   
   components: {
-    TodoList, AddTodo
+    TodoList, AddNote
   },
   methods: {
     delTodo(id){
       this.todos = this.todos.filter(t => t.id !== id)
       this.saveTodo()
     },
-    addTodo(todo) {
+    addNote(todo) {
       this.todos.push(todo)
       this.saveTodo()
     },

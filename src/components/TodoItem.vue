@@ -54,6 +54,18 @@ export default {
         margin-right: 10px;
     }
 
+    @media ( max-width: 578px ) {
+        .lileft {
+            padding-right: 10px;
+        }
+        button {
+            margin-right: 35px;
+        }
+    }	
+
+
+
+
 </style>>
 
 </style>

@@ -19,13 +19,13 @@ export default {
     methods: {
         onSubmit(){
             if (this.title.trim()) {
-                const newTodo = {
+                const newNote = {
                     id: Date.now(),
                     title: this.title,
                     completed: false
                 }
 
-                this.$emit('addtodo', newTodo)
+                this.$emit('addnote', newNote)
                 this.title = ''
             }
 
