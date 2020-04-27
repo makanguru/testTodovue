@@ -4,9 +4,9 @@
       <AddNote 
         @addnote="addNote"
       />
-      <TodoList 
-        v-bind:todos="todos"
-        @deltodo="delTodo"
+      <NoteList 
+        v-bind:notes="notes"
+        @delnote="delNote"
       />
   </div>
 
@@ -15,42 +15,42 @@
 
 <script>
 
-import TodoList from '@/components/TodoList'
+import NoteList from '@/components/NoteList'
 import AddNote from '@/components/AddNote'
 export default {
   name: 'App',
   data() {
     return {
-      todos: []
+      notes: []
     }
   },
   mounted(){
 
-    if (localStorage.getItem('Mnvtodos')) {
+    if (localStorage.getItem('Mnvnotes')) {
       try {
-        this.todos = JSON.parse(localStorage.getItem('Mnvtodos'));
+        this.notes = JSON.parse(localStorage.getItem('Mnvnotes'));
       } catch(e) {
-        localStorage.removeItem('Mnvtodos');
+        localStorage.removeItem('Mnvnotes');
       }
     }
       
   },
   
   components: {
-    TodoList, AddNote
+    NoteList, AddNote
   },
   methods: {
-    delTodo(id){
-      this.todos = this.todos.filter(t => t.id !== id)
+    delNote(id){
+      this.notes = this.notes.filter(t => t.id !== id)
       this.saveTodo()
     },
-    addNote(todo) {
-      this.todos.push(todo)
-      this.saveTodo()
+    addNote(note) {
+      this.notes.push(note)
+      this.saveNote()
     },
-    saveTodo() {
-      const parsed = JSON.stringify(this.todos);
-      localStorage.setItem('Mnvtodos', parsed);
+    saveNote() {
+      const parsed = JSON.stringify(this.notes);
+      localStorage.setItem('Mnvnotes', parsed);
     }
 
 

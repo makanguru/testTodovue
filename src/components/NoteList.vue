@@ -1,12 +1,12 @@
 <template>
     <div>
         <ul >
-            <TodoItem  
-                v-for="(todo, i) of todos" 
-                v-bind:todo="todo"
+            <NoteItem  
+                v-for="(note, i) of notes" 
+                v-bind:note="note"
                 v-bind:idx="i"
-                v-on:deltodo="delTodo"
-                v-bind:key="todo.id"
+                v-on:delnote="delNote"
+                v-bind:key="note.id"
             />    
         </ul>
     </div>
@@ -14,15 +14,15 @@
 
 
 <script>
-import TodoItem from '@/components/TodoItem'
+import NoteItem from '@/components/NoteItem'
 export default {
-    props: ['todos'],
+    props: ['notes'],
     components: {
-        TodoItem
+        NoteItem
     },
     methods: {
-        delTodo(id){
-            this.$emit('deltodo', id)
+        delNote(id){
+            this.$emit('delnote', id)
         }
     }
 }

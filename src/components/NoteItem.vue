@@ -3,10 +3,10 @@
     <div class="lileft">
         <div>{{idx+1}}</div>
     </div>        
-    <div class='title'>{{todo.title }}</div>
+    <div class='title'>{{note.title }}</div>
     
     <button 
-        v-on:click="$emit('deltodo', todo.id)" title='Delete row'>
+        v-on:click="$emit('delnote', note.id)" title='Delete row'>
         &otimes;
     </button>
     </li>
@@ -15,7 +15,7 @@
 <script>
 export default {
     props: {
-        todo: {
+        note: {
             type: Object,
             required: true
         },
