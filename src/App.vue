@@ -1,28 +1,87 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Todo test!</h1>
+      <AddTodo 
+        @addtodo="addTodo"
+      />
+      <TodoList 
+        v-bind:todos="todos"
+        @deltodo="delTodo"
+      />
   </div>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import TodoList from '@/components/TodoList'
+import AddTodo from '@/components/AddTodo'
 export default {
   name: 'App',
+  data() {
+    return {
+      todos: []
+    }
+  },
+  mounted(){
+
+    if (localStorage.getItem('Mnvtodos')) {
+      try {
+        this.todos = JSON.parse(localStorage.getItem('Mnvtodos'));
+      } catch(e) {
+        localStorage.removeItem('Mnvtodos');
+      }
+    }
+      
+  },
+  
   components: {
-    HelloWorld
+    TodoList, AddTodo
+  },
+  methods: {
+    delTodo(id){
+      this.todos = this.todos.filter(t => t.id !== id)
+      this.saveTodo()
+    },
+    addTodo(todo) {
+      this.todos.push(todo)
+      this.saveTodo()
+    },
+    saveTodo() {
+      const parsed = JSON.stringify(this.todos);
+      localStorage.setItem('Mnvtodos', parsed);
+    }
+
+
   }
 }
 </script>
 
 <style>
+
+body {
+  background: #f3f3f3;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000;
   margin-top: 60px;
+  
 }
+
+button {
+  background: #000;
+  color: #fff;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+
+
+
 </style>
