@@ -14,7 +14,8 @@ export default new Router({
     },
     {
       path: '/todos/:id',
-      component: () => import('./views/Todos.vue')
+      component: () => import('./views/Todos.vue'),
+      name: 'editNote'
     }
   ]
 })

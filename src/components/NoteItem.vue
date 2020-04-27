@@ -5,6 +5,12 @@
     </div>        
     <div class='title'>{{note.title }}</div>
     
+    <button title='Edit note'>
+        <router-link :to="{name: 'editNote', params: {id: note.id}}">
+            &hellip;
+        </router-link>
+    </button>
+
     <button 
         v-on:click="$emit('delnote', note.id)" title='Delete row'>
         &otimes;
@@ -52,6 +58,10 @@ export default {
     button {
         height: 33px;
         margin-right: 10px;
+    }
+
+    button a{
+        color: #fff;
     }
 
     @media ( max-width: 578px ) {
