@@ -5,7 +5,7 @@
     </div>        
     <div class='title'>{{note.title }}</div>
     
-    <button title='Edit note'>
+    <button title='Edit note with list of todo'>
         <router-link :to="{name: 'editNote', params: {id: note.id}}">
             &hellip;
         </router-link>

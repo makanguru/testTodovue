@@ -22,7 +22,8 @@ export default {
                 
                 const newNote = {
                     id: Date.now(),
-                    title: this.title
+                    title: this.title,
+                    todo: []
                 }
 
                 this.$emit('addnote', newNote)
