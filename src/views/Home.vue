@@ -19,6 +19,9 @@
 
 import NoteList from '@/components/NoteList'
 import AddNote from '@/components/AddNote'
+
+import {   getFromLocalStorage, saveToLocalStorage } from '../api/tutils'
+
 export default {
   name: 'App',
   data() {
@@ -28,14 +31,8 @@ export default {
   },
   mounted(){
 
-    if (localStorage.getItem('Mnvnotes')) {
-      try {
-        this.notes = JSON.parse(localStorage.getItem('Mnvnotes'));
-      } catch(e) {
-        localStorage.removeItem('Mnvnotes');
-      }
-    }
-      
+    this.notes = getFromLocalStorage('Mnvnotes', this.notes);
+
   },
   
   components: {
@@ -44,15 +41,11 @@ export default {
   methods: {
     delNote(id){
       this.notes = this.notes.filter(t => t.id !== id)
-      this.saveTodo()
+      saveToLocalStorage('Mnvnotes', this.notes)      
     },
     addNote(note) {
       this.notes.push(note)
-      this.saveNote()
-    },
-    saveNote() {
-      const parsed = JSON.stringify(this.notes);
-      localStorage.setItem('Mnvnotes', parsed);
+      saveToLocalStorage('Mnvnotes', this.notes)
     }
 
   }
